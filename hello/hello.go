@@ -27,6 +27,11 @@ func main() {
 	exitFatallyOn(err)
 	fmt.Println(message)
 
+	names := []string{"Jason", "Wendy", "Jacob", "Darin"}
+	messages, err := greetings.Hellos(names)
+	exitFatallyOn(err)
+	fmt.Println(messages)
+
 	// Get an error message and print it.
 	message, err = greetings.Hello("")
 	exitFatallyOn(err)

@@ -35,6 +35,31 @@ func Hello(name string) (string, error) {
 	return message, nil
 }
 
+// Hellos returns a map that associates each of the named people
+// with a greeting message.
+
+func Hellos(names []string) (map[string]string, error) {
+
+	// A map to associate names with messages.
+	messages := make(map[string]string)
+
+	// Loop through the received slice of names, calling
+	// the Hello function to get a message for each name.
+	// the underscore (_) is known as the "blank identifier." It is used to discard values that you don't need
+	// in this case, index.
+	// This loop is like Java's enhanced for loop but the index is made available, and we can ignore it with _
+	for _, name := range names {
+		message, err := Hello(name)
+		if err != nil {
+			return nil, err
+		}
+		// In the map, associate the retrieved message with
+		// the name.
+		messages[name] = message
+	}
+	return messages, nil
+}
+
 // Note that randomFormat starts with a lowercase letter, making it accessible only to code in its own package
 //(in other words, it's not exported).
 
