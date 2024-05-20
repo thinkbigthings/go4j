@@ -69,14 +69,20 @@ func randomFormat() string {
 
 	// A slice of message formats.
 	// When declaring a slice, you omit its size in the brackets, like this: []string.
-	//This tells Go that the size of the array underlying the slice can be dynamically changed.
+	// This tells Go that the size of the array underlying the slice can be dynamically changed.
 	formats := []string{
 		"Hi, %v. Welcome!",
 		"Great to see you, %v!",
 		"Hail, %v! Well met!",
 	}
 
+	dynamicFormats := make([]string, 0)
+
+	for _, f := range formats {
+		dynamicFormats = append(dynamicFormats, f)
+	}
+
 	// Return a randomly selected message format by specifying
 	// a random index for the slice of formats.
-	return formats[rand.Intn(len(formats))]
+	return dynamicFormats[rand.Intn(len(dynamicFormats))]
 }
