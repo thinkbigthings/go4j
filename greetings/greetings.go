@@ -9,6 +9,32 @@ import (
 // A function whose name starts with a capital letter can be called by a function not in the same package.
 // This is known in Go as an exported name.
 
+// FindFruit returns a list of fruits of the desired color.
+func FindFruit(desiredColor string) []string {
+
+	// https://github.com/jucardi/go-streams
+
+	// Create a map with string keys and string values
+	fruitColor := make(map[string]string)
+	fruitColor["peach"] = "orange"
+	fruitColor["apple"] = "red"
+	fruitColor["pear"] = "yellow"
+	fruitColor["plum"] = "purple"
+	fruitColor["pineapple"] = "yellow"
+	fruitColor["banana"] = "yellow"
+	fruitColor["strawberry"] = "red"
+	fruitColor["orange"] = "orange"
+
+	// Filter the map to keep only the desired fruits
+	//desiredKeys := streams.FromMap(fruitColor).Filter(func(e types.Tuple) bool {
+	//	return e.Value == desiredColor
+	//}
+
+	//// Print the filtered map
+	//return desiredFruits.Keys()
+	return nil
+}
+
 // Hello returns a greeting for the named person.
 func Hello(name string) (string, error) {
 
