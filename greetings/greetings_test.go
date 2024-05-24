@@ -30,3 +30,15 @@ func TestHelloEmpty(t *testing.T) {
 		t.Fatalf(`Hello("") = %q, %v, want "", error`, msg, err)
 	}
 }
+
+func TestFindFruits(t *testing.T) {
+	AssertEqual(t, 1, len(FindFruits("purple")))
+	AssertEqual(t, 2, len(FindFruits("red")))
+	AssertEqual(t, 3, len(FindFruits("yellow")))
+}
+
+func AssertEqual(t *testing.T, expected interface{}, actual interface{}) {
+	if expected != actual {
+		t.Fatalf("%v != %v", expected, actual)
+	}
+}

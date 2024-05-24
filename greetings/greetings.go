@@ -9,30 +9,48 @@ import (
 // A function whose name starts with a capital letter can be called by a function not in the same package.
 // This is known in Go as an exported name.
 
-// FindFruit returns a list of fruits of the desired color.
-func FindFruit(desiredColor string) []string {
+// FindFruits returns a list of fruits of the desired color.
+func FindFruits(desiredColor string) []string {
 
 	// https://github.com/jucardi/go-streams
 
 	// Create a map with string keys and string values
-	fruitColor := make(map[string]string)
-	fruitColor["peach"] = "orange"
-	fruitColor["apple"] = "red"
-	fruitColor["pear"] = "yellow"
-	fruitColor["plum"] = "purple"
-	fruitColor["pineapple"] = "yellow"
-	fruitColor["banana"] = "yellow"
-	fruitColor["strawberry"] = "red"
-	fruitColor["orange"] = "orange"
+	// this is a map literal
+	fruitColor := map[string]string{
+		"peach":      "orange",
+		"apple":      "red",
+		"pear":       "yellow",
+		"plum":       "purple",
+		"pineapple":  "yellow",
+		"banana":     "yellow",
+		"strawberry": "red",
+		"orange":     "orange",
+	}
 
-	// Filter the map to keep only the desired fruits
-	//desiredKeys := streams.FromMap(fruitColor).Filter(func(e types.Tuple) bool {
-	//	return e.Value == desiredColor
+	// range over a map iterates over key/value pairs, there is no index like range over a slice
+	found := make([]string, 0)
+	for key, val := range fruitColor {
+		if val == desiredColor {
+			found = append(found, key)
+		}
+	}
+
+	return found
+
+	// ConditionalFunc is an alias to `func(interface{}) bool`
+	// which serves to define if a condition is met for an element in the collection.
+	//type ConditionalFunc func(interface{}) bool
+	//isDesiredColor := func(e interface{}) bool {
+	//	tuple, ok := e.(types.Tuple)
+	//	if !ok {
+	//		return false
+	//	}
+	//	return tuple.At(1).String() == desiredColor
 	//}
 
-	//// Print the filtered map
-	//return desiredFruits.Keys()
-	return nil
+	// Filter the map to keep only the desired fruits
+	//desiredKeys := streams.FromMap(fruitColor).Filter(isDesiredColor).ToArray()
+
 }
 
 // Hello returns a greeting for the named person.
