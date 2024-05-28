@@ -6,6 +6,64 @@ import (
 	"math/rand"
 )
 
+// TODO clear up type alias vs type definition
+
+// Fruit defines a NEW type (this is a type definition, NOT a type alias)
+type Fruit struct {
+	Name  string
+	Color string
+}
+
+func provideRedFruits() []Fruit {
+	return []Fruit{
+		{"apple", "red"},
+		{"strawberry", "red"},
+	}
+}
+
+// TODO use pointers for the fruit
+func colorMatches(f Fruit, color string) bool {
+	return f.Color == color
+}
+
+func nameMatches(f Fruit, name string) bool {
+	return f.Name == name
+}
+
+// build a higher order function that takes a predicate function and a value
+func createPredicate(predicate func(Fruit, string) bool, value string) func(Fruit) bool {
+	return func(f Fruit) bool {
+		return predicate(f, value)
+	}
+}
+
+func FilterFruits() []Fruit {
+	allFruits := provideAllFruits()
+
+	predicate := createPredicate(colorMatches, "red")
+
+	found := make([]Fruit, 0)
+	for _, fruit := range allFruits {
+		if predicate(fruit) {
+			found = append(found, fruit)
+		}
+	}
+	return found
+}
+
+func provideAllFruits() []Fruit {
+	return []Fruit{
+		{"peach", "orange"},
+		{"apple", "red"},
+		{"pear", "yellow"},
+		{"plum", "purple"},
+		{"pineapple", "yellow"},
+		{"banana", "yellow"},
+		{"strawberry", "red"},
+		{"orange", "orange"},
+	}
+}
+
 // A function whose name starts with a capital letter can be called by a function not in the same package.
 // This is known in Go as an exported name.
 

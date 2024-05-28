@@ -37,6 +37,10 @@ func TestFindFruits(t *testing.T) {
 	AssertEqual(t, 3, len(FindFruits("yellow")))
 }
 
+func TestFilterFruits(t *testing.T) {
+	AssertEqual(t, 2, len(FilterFruits()))
+}
+
 func AssertEqual(t *testing.T, expected interface{}, actual interface{}) {
 	if expected != actual {
 		t.Fatalf("%v != %v", expected, actual)
