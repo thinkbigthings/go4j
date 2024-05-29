@@ -9,10 +9,13 @@ import (
 // TODO clear up type alias vs type definition
 
 // Fruit defines a NEW type (this is a type definition, NOT a type alias)
+// A struct is a collection of fields.
 type Fruit struct {
 	Name  string
 	Color string
 }
+
+type FruitPredicate func(Fruit) bool
 
 func provideRedFruits() []Fruit {
 	return []Fruit{
@@ -31,14 +34,13 @@ func nameMatches(f Fruit, name string) bool {
 }
 
 // build a higher order function that takes a predicate function and a value
-func createPredicate(predicate func(Fruit, string) bool, value string) func(Fruit) bool {
+func createPredicate(predicate func(Fruit, string) bool, value string) FruitPredicate {
 	return func(f Fruit) bool {
 		return predicate(f, value)
 	}
 }
 
 func FilterFruits() []Fruit {
-	allFruits := provideAllFruits()
 
 	predicate := createPredicate(colorMatches, "red")
 
@@ -51,17 +53,15 @@ func FilterFruits() []Fruit {
 	return found
 }
 
-func provideAllFruits() []Fruit {
-	return []Fruit{
-		{"peach", "orange"},
-		{"apple", "red"},
-		{"pear", "yellow"},
-		{"plum", "purple"},
-		{"pineapple", "yellow"},
-		{"banana", "yellow"},
-		{"strawberry", "red"},
-		{"orange", "orange"},
-	}
+var allFruits = []Fruit{
+	{"peach", "orange"},
+	{"apple", "red"},
+	{"pear", "yellow"},
+	{"plum", "purple"},
+	{"pineapple", "yellow"},
+	{"banana", "yellow"},
+	{"strawberry", "red"},
+	{"orange", "orange"},
 }
 
 // A function whose name starts with a capital letter can be called by a function not in the same package.
@@ -151,14 +151,16 @@ func Hellos(names []string) (map[string]string, error) {
 	// in this case, index.
 	// This loop is like Java's enhanced for loop but the index is made available, and we can ignore it with _
 	for _, name := range names {
-		message, err := Hello(name)
-		if err != nil {
+
+		// to access message outside of the if block, we need to declare it outside of the if block
+		var message string
+		var err error
+		if message, err = Hello(name); err != nil {
 			return nil, err
 		}
-		// In the map, associate the retrieved message with
-		// the name.
 		messages[name] = message
 	}
+
 	return messages, nil
 }
 
