@@ -6,8 +6,6 @@ import (
 	"math/rand"
 )
 
-// TODO clear up type alias vs type definition
-
 // Fruit defines a NEW type (this is a type definition, NOT a type alias)
 // A struct is a collection of fields.
 type Fruit struct {

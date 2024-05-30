@@ -1,20 +1,26 @@
 package greetings
 
-// Write your answer here, and then test your code.
-// Your job is to implement the findLargest() method.
+type Point2D struct {
+	X float32
+	Y float32
+}
 
-// Change these boolean values to control whether you see
-// the expected answer and/or hints.
-const showExpectedResult = false
+func (p Point2D) GetCenter() Point2D {
+	return p
+}
 
-const showHints = false
+type Position interface {
+	GetCenter() Point2D
+}
 
 type Shape interface {
+	Position
 	GetArea() float32
 	GetPerimeter() float32
 }
 
 type Circle struct {
+	Point2D
 	radius float32
 }
 
@@ -27,6 +33,7 @@ func (c Circle) GetPerimeter() float32 {
 }
 
 type Rectangle struct {
+	Point2D
 	length float32
 	width  float32
 }
@@ -39,22 +46,18 @@ func (r Rectangle) GetPerimeter() float32 {
 	return 2 * (r.length * r.width)
 }
 
-// create an appropariate struct to implemnt the Shape interface and build it here
 func NewCircle(radius float32) Shape {
 	return Circle{
 		radius: radius,
 	}
 }
 
-// create an appropriate struct to implemnt the Shape interface and build it here
 func NewRectangle(length, width float32) Shape {
 	return Rectangle{
 		length: length,
 		width:  width,
 	}
 }
-
-// TODO try composition and see methods be "inherited"
 
 //// This is how your code will be called.
 //// Your answer should be the largest value in the numbers array.
