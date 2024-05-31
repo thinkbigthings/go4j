@@ -1,5 +1,9 @@
 package greetings
 
+import (
+	"math"
+)
+
 type Point2D struct {
 	X float32
 	Y float32
@@ -7,6 +11,18 @@ type Point2D struct {
 
 func (p Point2D) GetCenter() Point2D {
 	return p
+}
+
+// TODO make consistent usage and test it out
+//
+//	methods on both value and pointer receivers is not recommended by the Go Documentation.
+func (p *Point2D) Abs() float64 {
+	return math.Sqrt(float64(p.X*p.X + p.Y*p.Y))
+}
+
+func (p *Point2D) Scale(f float32) {
+	p.X = p.X * f
+	p.Y = p.Y * f
 }
 
 type Position interface {
