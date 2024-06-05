@@ -46,3 +46,9 @@ func AssertEqual(t *testing.T, expected interface{}, actual interface{}) {
 		t.Fatalf("%v != %v", expected, actual)
 	}
 }
+
+func AssertTrue(t *testing.T, actual bool) {
+	if true != actual {
+		t.Fatalf("%v != %v", true, actual)
+	}
+}

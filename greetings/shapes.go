@@ -44,7 +44,7 @@ func (c *Circle) GetArea() float32 {
 }
 
 func (c *Circle) GetPerimeter() float32 {
-	return 2 * 3.14159 * c.radius
+	return 2 * math.Pi * c.radius
 }
 
 type Rectangle struct {
@@ -58,7 +58,7 @@ func (r *Rectangle) GetArea() float32 {
 }
 
 func (r *Rectangle) GetPerimeter() float32 {
-	return 2 * (r.length * r.width)
+	return 2 * (r.length + r.width)
 }
 
 func NewCircle(radius float32) Shape {
