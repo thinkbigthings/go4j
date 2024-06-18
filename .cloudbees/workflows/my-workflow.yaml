@@ -12,16 +12,16 @@ jobs:
         uses: cloudbees-io/checkout@v1
   build:
     steps:
-      - name: Say hello
+      - name: Hello
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
         run: |
           echo "hello world"
-      # - name: Build
-      #   uses: docker://golang:1.20.3-alpine3.17
-      #   shell: sh
-      #   run: |
-      #     cd hello; go build; ./hello
+      - name: Build
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          cd hello; go build; ./hello
     needs:
       - checkout
 
