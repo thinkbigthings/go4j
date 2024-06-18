@@ -1,13 +1,15 @@
 apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
 name: My workflow
-
 on:
   push:
     branches:
-      - '**'
-
+      - "**"
 jobs:
+  checkout:
+    steps:
+      - name: checkout
+        uses: cloudbees-io/checkout@v1
   build:
     steps:
       - name: Say hello
@@ -15,8 +17,11 @@ jobs:
         shell: sh
         run: |
           echo "hello world"
-      - name: Build
-        uses: docker://golang:1.20.3-alpine3.17
-        shell: sh
-        run: |
-          cd hello; go build; ./hello
+      # - name: Build
+      #   uses: docker://golang:1.20.3-alpine3.17
+      #   shell: sh
+      #   run: |
+      #     cd hello; go build; ./hello
+    needs:
+      - checkout
+
