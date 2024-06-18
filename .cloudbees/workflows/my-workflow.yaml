@@ -19,6 +19,6 @@ jobs:
         uses: docker://golang:1.21.6
         shell: sh
         run: |
-          cd hello; go build; ls; ./hello
+          cd hello; go build; ls;
 
 
