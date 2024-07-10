@@ -17,3 +17,4 @@ go clean -i ./...
 
 - update the go version in each go.mod file
 - run go mod tidy
+- update the golang docker container in my-workflow.yaml
