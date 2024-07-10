@@ -1,6 +1,7 @@
 package greetings
 
 import (
+	"github.com/stretchr/testify/assert"
 	"math"
 	"testing"
 )
@@ -27,6 +28,6 @@ func TestShape(t *testing.T) {
 	results["rectangleArea"] = shapes["rectangle"].GetArea()
 	results["rectanglePerimeter"] = shapes["rectangle"].GetPerimeter()
 
-	AssertEqual(t, float32(22.0), results["rectanglePerimeter"])
-	AssertTrue(t, math.Abs(10.0*math.Pi-float64(results["circlePerimeter"])) < 0.0001)
+	assert.Equal(t, float32(22.0), results["rectanglePerimeter"])
+	assert.True(t, math.Abs(10.0*math.Pi-float64(results["circlePerimeter"])) < 0.0001)
 }

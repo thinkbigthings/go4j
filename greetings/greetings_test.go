@@ -1,6 +1,7 @@
 package greetings
 
 import (
+	"github.com/stretchr/testify/assert"
 	"regexp"
 	"testing"
 )
@@ -32,23 +33,11 @@ func TestHelloEmpty(t *testing.T) {
 }
 
 func TestFindFruits(t *testing.T) {
-	AssertEqual(t, 1, len(FindFruits("purple")))
-	AssertEqual(t, 2, len(FindFruits("red")))
-	AssertEqual(t, 3, len(FindFruits("yellow")))
+	assert.Equal(t, 1, len(FindFruits("purple")))
+	assert.Equal(t, 2, len(FindFruits("red")))
+	assert.Equal(t, 3, len(FindFruits("yellow")))
 }
 
 func TestFilterFruits(t *testing.T) {
-	AssertEqual(t, 2, len(FilterFruits()))
-}
-
-func AssertEqual(t *testing.T, expected interface{}, actual interface{}) {
-	if expected != actual {
-		t.Fatalf("%v != %v", expected, actual)
-	}
-}
-
-func AssertTrue(t *testing.T, actual bool) {
-	if true != actual {
-		t.Fatalf("%v != %v", true, actual)
-	}
+	assert.Equal(t, 2, len(FilterFruits()))
 }
