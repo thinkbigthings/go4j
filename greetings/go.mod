@@ -1,6 +1,6 @@
 module example.com/greetings
 
-go 1.21.6
+go 1.22.4
 
 require github.com/stretchr/testify v1.7.0
 

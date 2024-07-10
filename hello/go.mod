@@ -1,6 +1,6 @@
 module example.com/hello
 
-go 1.21.6
+go 1.22.4
 
 replace example.com/greetings => ../greetings
 
