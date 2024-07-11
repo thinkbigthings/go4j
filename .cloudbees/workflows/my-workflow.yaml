@@ -24,8 +24,8 @@ jobs:
         shell: sh
         run: |
           cd hello; go build; ls;
-          - id: testAction
-      - name: Test publish-evidence-item action
+      - id: testAction
+        name: Test publish-evidence-item action
         uses: cloudbees-io/publish-evidence-item@v1
         with:
           content: |
