@@ -5,6 +5,10 @@ on:
   push:
     branches:
       - "**"
+      
+permissions:
+  id-token: read
+  
 jobs:
   build:
     steps:
@@ -20,5 +24,13 @@ jobs:
         shell: sh
         run: |
           cd hello; go build; ls;
-
+          - id: testAction
+      - name: Test publish-evidence-item action
+        uses: cloudbees-io/publish-evidence-item@v1
+        with:
+          content: |
+            ## Test markup and property rendering
+            - Run ID: ${{ cloudbees.run_id }}
+            - Color test: <span style="color:green">This text should be green</span>
+            - [backend.tar](https://ourcompany.com/repo/backend.tar)
 
