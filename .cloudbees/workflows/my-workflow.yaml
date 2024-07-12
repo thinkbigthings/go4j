@@ -33,7 +33,7 @@ jobs:
             - User values: user-defined text and markup could go here
             ## Supported fields can be listed (cloudbees: api, event, event_name, home, run_id, scm, version, workspace)
             - Run ID: ${{ cloudbees.run_id }}
-            - Others: ${{ cloudbees.scm}}, ${{ cloudbees.version }}, ${{ cloudbees.workspace }}
+            - Others: ${{ cloudbees.scm.branch}}, ${{ cloudbees.scm.sha }}, ${{ cloudbees.version }}, ${{ cloudbees.workspace }}
 
 
 
