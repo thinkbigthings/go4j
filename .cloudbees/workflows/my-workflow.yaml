@@ -34,7 +34,6 @@ jobs:
             ## Supported fields can be listed
             - Run ID: ${{ cloudbees.run_id }}
             - Version: ${{ cloudbees.version }}
-            - Workspace: ${{ cloudbees.workspace }}
             ## SCM
             - Branch: ${{ cloudbees.scm.branch}}
             - SHA: ${{ cloudbees.scm.sha }}
