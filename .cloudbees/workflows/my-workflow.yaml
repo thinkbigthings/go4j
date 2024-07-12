@@ -31,9 +31,13 @@ jobs:
           content: |
             ## Comments are titles for the content
             - User values: user-defined text and markup could go here
-            ## Supported fields can be listed (cloudbees: api, event, event_name, home, run_id, scm, version, workspace)
+            ## Supported fields can be listed
             - Run ID: ${{ cloudbees.run_id }}
-            - Others: ${{ cloudbees.scm.branch}}, ${{ cloudbees.scm.sha }}, ${{ cloudbees.version }}, ${{ cloudbees.workspace }}
+            - Version: ${{ cloudbees.version }}
+            - Workspace: ${{ cloudbees.workspace }}
+            ## SCM
+            - Branch: ${{ cloudbees.scm.branch}}
+            - SHA: ${{ cloudbees.scm.sha }}
 
 
 
