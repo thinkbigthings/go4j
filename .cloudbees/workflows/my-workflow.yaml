@@ -31,10 +31,10 @@ jobs:
           content: |
             ## Comments are titles for the content
             - User values: user-defined text and markup could go here
-            ## Predefined values can be listed
+            ## Supported fields can be listed (cloudbees: api, event, event_name, home, run_id, scm, version, workspace)
             - Run ID: ${{ cloudbees.run_id }}
-            - Run Attempt: ${{ cloudbees.run_attempt }}
             - Component ID: ${{ cloudbees.component_id }}
+            - Others: ${{ cloudbees.scm}}, ${{ cloudbees.version }}, ${{ cloudbees.workspace }}
 
 
 
