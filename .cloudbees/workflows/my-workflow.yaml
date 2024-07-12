@@ -32,6 +32,6 @@ jobs:
             ## Test markup and property rendering
             - Run ID: ${{ cloudbees.run_id }}
             ## some tags are removed for security, so span wont work
-            - Color test: <span style="color:green">This text should be green</span>
+            - User values: user-defined text and markup could go here
 
 
