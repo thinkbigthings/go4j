@@ -15,12 +15,12 @@ jobs:
       - name: checkout
         uses: cloudbees-io/checkout@v1
       - name: Hello
-        uses: docker://golang:1.22.4
+        uses: docker://golang:${{ inputs.go_version }}
         shell: sh
         run: |
           echo "hello world"
       - name: Build
-        uses: docker://golang:1.22.4
+        uses: docker://golang:${{ inputs.go_version }}
         shell: sh
         run: |
           cd hello; go build; ls;
