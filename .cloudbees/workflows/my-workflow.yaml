@@ -15,7 +15,6 @@ jobs:
       - name: checkout
         uses: cloudbees-io/checkout@v1
       - name: Hello
-#        uses: docker://golang:${{ vars.go_version }}
         uses: docker://golang:1.22.4
         shell: sh
         run: |
