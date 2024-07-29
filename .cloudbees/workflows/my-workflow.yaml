@@ -5,10 +5,11 @@ on:
   push:
     branches:
       - "**"
-      
+  workflow_dispatch: {}
+  
 permissions:
   id-token: read
-  
+
 jobs:
   build:
     steps:
@@ -37,6 +38,3 @@ jobs:
             ## SCM
             - Branch: ${{ cloudbees.scm.branch}}
             - SHA: ${{ cloudbees.scm.sha }}
-
-
-
