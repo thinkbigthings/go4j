@@ -6,8 +6,6 @@ import (
 	"testing"
 )
 
-//  Ending a file's name with _test.go tells the go test command that this file contains test functions.
-
 // TODO try Table tests, see reflect.DeepEqual, try -cover flag and -coverprofile=coverage.out and go tool cover -html=coverage.out
 // mocking with gomock (and testify?)
 
