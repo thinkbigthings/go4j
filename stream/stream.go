@@ -4,10 +4,6 @@ type Stream struct {
 	list []string
 }
 
-func List(data []string) Stream {
-	return Stream{list: data}
-}
-
 func (r Stream) Map(mapper func(interface{}) string) Stream {
 
 	mapped := make([]string, len(r.list))
@@ -36,6 +32,6 @@ func (r Stream) Filter(predicate func(interface{}) bool) Stream {
 	return r
 }
 
-func (r Stream) Collect() []string {
+func (r Stream) ToList() []string {
 	return r.list
 }
