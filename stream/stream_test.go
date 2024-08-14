@@ -32,35 +32,30 @@ func TestFilterSuccesses(t *testing.T) {
 		return strings.HasPrefix(item.(string), "a")
 	}
 
-	type testCase struct {
-		description string
-		input       []string
-		expected    []string
+	// Table Test using maps, see https://semaphoreci.com/blog/table-driven-unit-tests-go
+
+	tests := map[string]struct {
+		input    []string
+		expected []string
+	}{
+		"filter finds a": {
+			input:    []string{"a", "b", "c"},
+			expected: []string{"a"},
+		},
+		"filter works with empty inputs": {
+			input:    []string{},
+			expected: []string{},
+		},
+		"filter works with empty strings": {
+			input:    []string{""},
+			expected: []string{},
+		},
 	}
 
-	// TODO try with maps https://semaphoreci.com/blog/table-driven-unit-tests-go
-
-	// This is a Table Test
-	for _, scenario := range []testCase{
-		{
-			description: "filter finds a",
-			input:       []string{"a", "b", "c"},
-			expected:    []string{"a"},
-		},
-		{
-			description: "filter works with empty inputs",
-			input:       []string{},
-			expected:    []string{},
-		},
-		{
-			description: "filter works with empty strings",
-			input:       []string{""},
-			expected:    []string{},
-		},
-	} {
-		t.Run(scenario.description, func(t *testing.T) {
-			output := Stream{list: scenario.input}.Filter(startsWithA).ToList()
-			assert.Equal(t, scenario.expected, output)
+	for name, test := range tests {
+		t.Run(name, func(t *testing.T) {
+			actual := Stream{list: test.input}.Filter(startsWithA).ToList()
+			assert.Equal(t, test.expected, actual)
 		})
 	}
 
