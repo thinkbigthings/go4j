@@ -53,7 +53,8 @@ func TestFilterSuccesses(t *testing.T) {
 		},
 	}
 
-	// alternatively to assert.Equal, we can use reflect.DeepEqual for complex data structures
+	// There is a DeepEqual method to compare complex data structures,
+	// but you don't need it for assertions... assert.Equal will ultimately call DeepEqual under the hood if necessary
 	reflect.DeepEqual([]string{"a"}, []string{"a"})
 
 	for name, test := range tests {
