@@ -2,13 +2,14 @@ package stream
 
 import (
 	"github.com/stretchr/testify/assert"
+	"reflect"
 	"strings"
 	"testing"
 )
 
-// TODO see reflect.DeepEqual, try -cover flag and -coverprofile=coverage.out and go tool cover -html=coverage.out
-// mocking with gomock (and testify?)
+// TODO
 // generify the stream
+// mocking with gomock ("github.com/golang/mock/gomock") might be better to test on regular app service
 
 func TestFilterMap(t *testing.T) {
 
@@ -51,6 +52,9 @@ func TestFilterSuccesses(t *testing.T) {
 			expected: []string{},
 		},
 	}
+
+	// alternatively to assert.Equal, we can use reflect.DeepEqual for complex data structures
+	reflect.DeepEqual([]string{"a"}, []string{"a"})
 
 	for name, test := range tests {
 		t.Run(name, func(t *testing.T) {
