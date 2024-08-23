@@ -1,37 +1,33 @@
 package stream
 
-type Stream struct {
-	list []string
-}
-
-func (r Stream) Map(mapper func(interface{}) string) Stream {
-
-	mapped := make([]string, len(r.list))
-
-	for i, item := range r.list {
-		mapped[i] = mapper(item)
+// Map function that applies a transformation to each element in the slice.
+func Map[T, R any](input []T, transform func(T) R) []R {
+	result := make([]R, len(input))
+	for i, item := range input {
+		result[i] = transform(item)
 	}
-
-	r.list = mapped
-
-	return r
+	return result
 }
 
-func (r Stream) Filter(predicate func(interface{}) bool) Stream {
-
-	filtered := make([]string, 0)
-
-	for _, item := range r.list {
+func Filter[T any](input []T, predicate func(T) bool) []T {
+	var result []T
+	for _, item := range input {
 		if predicate(item) {
-			filtered = append(filtered, item)
+			result = append(result, item)
 		}
 	}
-
-	r.list = filtered
-
-	return r
+	// Ensure result is not nil
+	if result == nil {
+		return []T{}
+	}
+	return result
 }
 
-func (r Stream) ToList() []string {
-	return r.list
+// Reduce function that reduces the slice to a single value.
+func Reduce[T any](input []T, initial T, reducer func(T, T) T) T {
+	result := initial
+	for _, item := range input {
+		result = reducer(result, item)
+	}
+	return result
 }
