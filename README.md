@@ -25,7 +25,7 @@ In the first command, we use -coverprofile to save coverage results to the file.
 
 By using the same cover tool, we can also view coverage result as an HTML page:
 
-    go tool cover -html=coverage.out
+    go test -coverprofile=coverage.out ./...; go tool cover -html=coverage.out
 
 
 # Cleaning
