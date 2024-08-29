@@ -8,6 +8,9 @@
 *.so
 *.dylib
 
+# Sensitive data can be stored in environment variables and not committed
+.env
+
 # Test binary, built with `go test -c`
 *.test
 
