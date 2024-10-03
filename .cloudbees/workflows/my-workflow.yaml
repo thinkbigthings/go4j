@@ -5,11 +5,11 @@ on:
   push:
     branches:
       - "**"
-  workflow_dispatch: {}
-  
+  schedule:
+    - cron: 0,10,20,30,40,50 * * * *
+    - cron: 30 5 * * 2,4
 permissions:
   id-token: read
-
 jobs:
   build:
     steps:
