@@ -39,11 +39,11 @@ jobs:
             ## SCM
             - Branch: ${{ cloudbees.scm.branch}}
             - SHA: ${{ cloudbees.scm.sha }}
-    needs:
-      - Proceed
-  Proceed:
-    delegates: cloudbees-io/manual-approval/custom-job.yml@v1
-    with:
-      approvers: 56948ada-7876-11ec-be47-42010a83ae75
-      disallowLaunchByUser: false
-      instruction: Approve this to finish the job
+  #   needs:
+  #     - Proceed
+  # Proceed:
+  #   delegates: cloudbees-io/manual-approval/custom-job.yml@v1
+  #   with:
+  #     approvers: 56948ada-7876-11ec-be47-42010a83ae75
+  #     disallowLaunchByUser: false
+  #     instruction: Approve this to finish the job
