@@ -2,11 +2,11 @@ apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
 name: My workflow
 on:
-  # push: 
-  #   branches:
-  #     - "**"
-  schedule:
-    - cron: 0,13,20,30,45,50 * * * *
+  push: 
+    branches:
+      - "**"
+  # schedule:
+  #   - cron: 0,13,20,30,45,50 * * * *
     # - cron: 30 5 * * 2,4
 permissions:
   id-token: read|write
