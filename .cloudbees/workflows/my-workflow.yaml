@@ -2,15 +2,11 @@ apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
 name: My workflow
 on:
-  push: 
+  push:
     branches:
       - "**"
-  # schedule:
-  #   - cron: 0,13,20,30,45,50 * * * *
-    # - cron: 30 5 * * 2,4
 permissions:
   id-token: read|write
-  
 jobs:
   build:
     steps:
@@ -39,11 +35,11 @@ jobs:
             ## SCM
             - Branch: ${{ cloudbees.scm.branch}}
             - SHA: ${{ cloudbees.scm.sha }}
-  #   needs:
-  #     - Proceed
-  # Proceed:
-  #   delegates: cloudbees-io/manual-approval/custom-job.yml@v1
-  #   with:
-  #     approvers: 56948ada-7876-11ec-be47-42010a83ae75
-  #     disallowLaunchByUser: false
-  #     instruction: Approve this to finish the job
+    needs:
+      - FinishTheThing
+  FinishTheThing:
+    delegates: cloudbees-io/manual-approval/custom-job.yml@v1
+    with:
+      approvers: 56948ada-7876-11ec-be47-42010a83ae75
+      disallowLaunchByUser: false
+      instruction: Approve this please.
