@@ -3,7 +3,7 @@ kind: workflow
 name: My workflow
 on:
   schedule:
-    - cron: 0,10,26,30,40,50 * * * *
+    - cron: 0,10,26,32,40,50 * * * *
 
 permissions:
   id-token: read|write
