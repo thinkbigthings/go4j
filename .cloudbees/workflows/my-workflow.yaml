@@ -3,6 +3,12 @@ kind: workflow
 name: My workflow
 permissions:
   id-token: read|write
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   build:
     steps:
