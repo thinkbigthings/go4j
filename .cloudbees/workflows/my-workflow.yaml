@@ -1,10 +1,6 @@
 apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
 name: My workflow
-# on:
-  # schedule:
-  #   - cron: 0,10,20,30,40,50 * * * *
-
 permissions:
   id-token: read|write
 jobs:
@@ -35,3 +31,12 @@ jobs:
             ## SCM
             - Branch: ${{ cloudbees.scm.branch}}
             - SHA: ${{ cloudbees.scm.sha }}
+    needs:
+      - Approve-Completion
+  Approve-Completion:
+    timeout-minutes: 4320
+    delegates: cloudbees-io/manual-approval/custom-job.yml@v1
+    with:
+      approvers: de39a936-7a04-11ec-81d0-42010a83ae75
+      disallowLaunchByUser: false
+      instructions: Approve this please.
