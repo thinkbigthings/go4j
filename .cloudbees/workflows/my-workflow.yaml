@@ -3,12 +3,10 @@ kind: workflow
 name: My workflow
 permissions:
   id-token: read|write
-
 on:
   push:
     branches:
       - main
-
 jobs:
   build:
     steps:
@@ -43,6 +41,6 @@ jobs:
     timeout-minutes: 180
     delegates: cloudbees-io/manual-approval/custom-job.yml@v1
     with:
-      approvers: de39a936-7a04-11ec-81d0-42010a83ae75
+      approvers: de39a936-7a04-11ec-81d0-42010a83ae75,56948ada-7876-11ec-be47-42010a83ae75,4b7f53fc-d4fe-11ec-bb55-42010a83ae55
       disallowLaunchByUser: false
       instructions: Approve this please.
