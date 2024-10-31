@@ -7,6 +7,8 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: 20 * * * *
 jobs:
   build:
     steps:
@@ -35,12 +37,3 @@ jobs:
             ## SCM
             - Branch: ${{ cloudbees.scm.branch}}
             - SHA: ${{ cloudbees.scm.sha }}
-    needs:
-      - Approve-Completion
-  Approve-Completion:
-    timeout-minutes: 180
-    delegates: cloudbees-io/manual-approval/custom-job.yml@v1
-    with:
-      approvers: 56948ada-7876-11ec-be47-42010a83ae75
-      disallowLaunchByUser: false
-      instructions: Approve this please.
