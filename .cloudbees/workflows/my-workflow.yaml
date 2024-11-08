@@ -8,7 +8,19 @@ on:
     branches:
       - main
 
+env:
+  REPO_VALUE: 'https://github.com/thinkbigthings/go4j'
+
 jobs:
+
+  test-env:
+    if: ${{ REPO_VALUE }} == 'https://github.com/thinkbigthings/go4j'
+    steps:
+      - name: My step
+        uses: docker://alpine:3.18
+        run: echo "Hello $ENV_VALUE" #prints "Hello development"
+
+
   build:
     steps:
       - name: checkout
