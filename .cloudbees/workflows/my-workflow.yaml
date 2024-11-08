@@ -9,16 +9,16 @@ on:
       - main
 
 env:
-  REPO_VALUE: https://github.com/thinkbigthings/go4j
+  EVENT_VALUE: ${{cloudbees.event_name}}
 
 jobs:
 
   test-env:
-#    if: ${{env.REPO_VALUE}} == https://github.com/thinkbigthings/go4j
+#    if: ${{env.EVENT_VALUE}} == push
     steps:
       - name: My step
         uses: docker://alpine:3.18
-        run: echo "Hello $REPO_VALUE"
+        run: echo "Hello $EVENT_VALUE"
 
 
   build:
