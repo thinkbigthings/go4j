@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: My step
         uses: docker://alpine:3.18
-        run: echo "Hello $ENV_VALUE" #prints "Hello development"
+        run: echo "Hello $REPO_VALUE"
 
 
   build:
