@@ -14,7 +14,7 @@ env:
 jobs:
 
   test-env:
-    if: ${{env.REPO_VALUE}} == 'https://github.com/thinkbigthings/go4j'
+    if: ${{env.REPO_VALUE}} == https://github.com/thinkbigthings/go4j
     steps:
       - name: My step
         uses: docker://alpine:3.18
