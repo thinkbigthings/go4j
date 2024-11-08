@@ -14,7 +14,7 @@ env:
 jobs:
 
   test-env:
-    if: ${{env.EVENT_VALUE}} == push
+    if: $EVENT_VALUE == push
     steps:
       - name: My step
         uses: docker://alpine:3.18
