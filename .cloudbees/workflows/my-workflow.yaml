@@ -9,7 +9,7 @@ on:
       - main
 
 env:
-  REPO_VALUE: 'https://github.com/thinkbigthings/go4j'
+  REPO_VALUE: https://github.com/thinkbigthings/go4j
 
 jobs:
 
