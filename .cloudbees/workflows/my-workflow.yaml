@@ -4,11 +4,11 @@ name: My workflow
 permissions:
   id-token: read|write
 on:
-  # push:
-  #   branches:
-  #     - main
-  schedule:
-    - cron: 1 * * * *
+  push:
+    branches:
+      - main
+  # schedule:
+  #   - cron: 1 * * * *
 
 env:
   EVENT_VALUE: ${{cloudbees.event_name}}
