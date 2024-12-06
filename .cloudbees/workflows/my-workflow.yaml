@@ -2,13 +2,13 @@ apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
 name: My workflow
 permissions:
-  id-token: read|write
+  id-token: read
 on:
-  push:
-    branches:
-      - main
-  # schedule:
-  #   - cron: 1 * * * *
+  # push:
+  #   branches:
+  #     - main
+  schedule:
+    - cron: 24 * * * *
 
 env:
   EVENT_VALUE: ${{cloudbees.event_name}}
